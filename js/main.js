@@ -11,17 +11,17 @@ const modifiedElem = document.getElementById("modifiedElement");
 
 function callback(entries, observer) {
 	entries.forEach((entry) => {
-		const elem = entry.target;
-        const modifier = elem.getAttribute('data-scrolltarget');
-        let parent = elem.closest('.container');
-        let imageActive = parent.querySelector('.modifiedElement img.active');
-        let images = parent.querySelectorAll('.modifiedElement img');
+		let elem = entry.target;
+    let modifier = elem.getAttribute('data-scrolltarget');
+    let parent = elem.closest('.container');
+    let imageActive = parent.querySelector('.modifiedElement img.active');
+    let images = parent.querySelectorAll('.modifiedElement img');
 
 		if (entry.intersectionRatio >= threshold) {
 			// elem.classList.add(isAnimated);
 			//observer.unobserve(elem);
-			imageActive.classList.toggle('active');
-            images[modifier].classList.add('active');
+			imageActive.classList.remove('active');
+      images[modifier].classList.add('active');
 
 		} else {
 			// elem.classList.remove(isAnimated);
@@ -36,8 +36,41 @@ for (const target of targets) {
 }
 
 /*------------------------------------------------------------------
+  Counter anim
+*/
+
+const counterElems = document.querySelectorAll('.animCounter');
+function counterAnimate(entries, observer) {
+  entries.forEach((entry) => {
+    let elem = entry.target;
+    let modifier = elem.getAttribute('data-counter');
+    console.log(elem)
+
+    if (entry.intersectionRatio >= threshold) {
+			//observer.unobserve(elem);
+      for (let i = 0; i <= modifier; i++) {
+        elem.innerHTML =++i
+      }
+
+		} else {
+			// elem.classList.remove(isAnimated);
+      elem.innerHTML = '0'
+			// modifiedElem.innerHTML = "Back to start"
+		}
+  })
+}
+
+const counterObserver = new IntersectionObserver(counterAnimate, { threshold });
+for (const counter of counterElems) {
+	counterObserver.observe(counter);
+}
+
+/*------------------------------------------------------------------
     Basic-scroll
 ------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+  Enter in view animation
+*/
 
 document.querySelectorAll('.enterAnim').forEach((elem) => {
 
@@ -51,14 +84,14 @@ document.querySelectorAll('.enterAnim').forEach((elem) => {
 				from: '30%',
 				to: '0'
 			},
-            '--opacity': {
-                from: 0.01,
-                to: 1
-            },
-            '--scale': {
-                from: 0.9,
-                to: 1
-            }
+      '--opacity': {
+          from: 0.01,
+          to: 1
+      },
+      '--scale': {
+          from: 0.9,
+          to: 1
+      }
 		}
 	}).start()
 

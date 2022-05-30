@@ -11,6 +11,25 @@
     /* Space */
     --sp-xl: 12rem;
     --sp-l: 6rem;
+
+    /* Units */
+    --u1: 8px;
+    --u2: calc(var(--u1) * 2);
+    --u3: calc(var(--u1) * 3);
+    --u4: calc(var(--u1) * 4);
+    --u5: calc(var(--u1) * 5);
+    --u6: calc(var(--u1) * 6);
+    --u7: calc(var(--u1) * 7);
+    --u8: calc(var(--u1) * 8);
+    --u9: calc(var(--u1) * 9);
+
+}
+
+@media screen and (max-width: 1900px) {
+    :root {
+        --sp-xl: 6rem;
+        --sp-l: 3rem;
+    }
 }
 
 @font-face {
@@ -61,7 +80,7 @@ h1, h2, h3, h4, p {
     font-weight: bold;
 }
 .text-huge {
-    font-size: 20vmax;
+    font-size: 19vmax;
 }
 .text-7xl {
     font-size: 160px;
@@ -155,6 +174,9 @@ h1, h2, h3, h4, p {
 .col-2-3 {
     width: calc(100% / 3 * 2);
 }
+.col-full {
+    width: 100%;
+}
 
 /*------------------------------------------------------------------
     Spacing & sizing
@@ -163,6 +185,12 @@ h1, h2, h3, h4, p {
     padding-left: var(--sp-xl);
     padding-right: var(--sp-xl);
 }
+
+.padding-x-s {
+    padding-left: var(--u1);
+    padding-right: var(--u1);
+}
+
 
 .aspect-4-3 {
     aspect-ratio: 4 / 3;
@@ -184,7 +212,7 @@ img {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--u2);
 }
 .img-box img {
     position: absolute;
@@ -216,6 +244,24 @@ img {
     background-repeat: no-repeat;
     background-position: center center;
     animation: rotation 12s linear infinite;
+}
+
+/*------------------------------------------------------------------
+    Play video
+*/
+.player {
+    padding: var(--sp-l);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.play-icon.xl {
+    width: var(--u9);
+    height: var(--u9);
+    background-image: url('../assets/play.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 
@@ -316,4 +362,15 @@ img {
 .enterAnim {
     opacity: var(--opacity);
     transform: translateY(var(--translate)) scale(var(--scale));
+}
+
+/*------------------------------------------------------------------
+    Video
+*/
+.video {
+    background-image: url('../assets/fiat_turbina-16-9.jpg');
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--u2);
+    max-height: 96vh;
 }

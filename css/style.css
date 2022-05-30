@@ -41,6 +41,7 @@ html, body {
 }
 body {
     overflow-x: hidden;
+    background-color: var(--dark);
 }
 
 
@@ -115,7 +116,6 @@ h1, h2, h3, h4, p {
 */
 .section {
     width: 100vw;
-    background-color: var(--dark);
     position: relative;
     box-sizing: border-box;
     display: flex;

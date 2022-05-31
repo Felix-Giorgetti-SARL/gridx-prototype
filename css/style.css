@@ -239,7 +239,7 @@ img {
 }
 .img-wrapper::after {
     content: '';
-    background-image: url('/assets/blob.svg');
+    background-image: url('../assets/blob.svg');
     background-size: contain;
     position: absolute;
     top: calc(var(--sp-l) * -1);

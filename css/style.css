@@ -408,3 +408,14 @@ img {
     border-radius: var(--u2);
     max-height: 96vh;
 }
+
+/*------------------------------------------------------------------
+    Map
+*/
+.map {
+    background-image: url('../assets/map.png');
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--u2);
+    max-height: 96vh;
+}

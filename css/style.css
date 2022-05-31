@@ -69,7 +69,7 @@ body {
 ------------------------------------------------------------------*/
 
 h1, h2, h3, h4, p {
-    margin: 0;
+    margin: 0 0 0.4em 0;
     font-weight: normal;
 }
 
@@ -81,6 +81,7 @@ h1, h2, h3, h4, p {
 }
 .text-huge {
     font-size: 19vmax;
+    line-height: 0.8em;
 }
 .text-7xl {
     font-size: 160px;
@@ -156,6 +157,7 @@ h1, h2, h3, h4, p {
 .chapter {
     padding-bottom: 60vh;
     margin-top: 30vh;
+    max-width: 48ch;
 }
 .sticky {
     position: sticky;
@@ -194,6 +196,11 @@ h1, h2, h3, h4, p {
 
 .aspect-4-3 {
     aspect-ratio: 4 / 3;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
 
 /*------------------------------------------------------------------
@@ -418,4 +425,35 @@ img {
     aspect-ratio: 16 / 9;
     border-radius: var(--u2);
     max-height: 96vh;
+}
+/*------------------------------------------------------------------
+    Museums
+*/
+.card {
+    padding: var(--u6);
+    background-color: var(--dark);
+    margin: var(--u3);
+    border-radius: var(--u2);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+}
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#84edc1, #79c0ff);
+    filter: blur(6rem);
+    opacity: 0.5;
+    z-index: -1;
+}
+.card img {
+    width: auto;
+    height: auto;
+    max-height: 12rem;
 }

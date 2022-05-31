@@ -34,13 +34,13 @@
 
 @font-face {
     font-family: 'Firs';
-    src: url('/assets/font/firs-regular.woff2');
+    src: url('../assets/font/firs-regular.woff2');
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'Firs';
-    src: url('/assets/font/firs-demibold.woff2');
+    src: url('../assets/font/firs-demibold.woff2');
     font-weight: bold;
 }
 

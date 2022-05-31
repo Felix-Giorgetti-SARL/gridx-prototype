@@ -282,11 +282,35 @@ img {
     }
 }
 
+@keyframes buildingAppear {
+    0% {
+        opacity: 0.01;
+        filter: blur(10px);
+        bottom: -6%;
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        bottom: 0;
+    }
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0.01;
+        filter: blur(80px);
+    }
+    100% {
+        opacity: 0.99;
+        filter: blur(0);
+    }
+}
+
 .section.main {
-	height: 120vh;
-	align-items: center;
+	height: 140vh;
+    justify-content: flex-start;
     padding: 12vh 0 0;
-    background-image: linear-gradient(0deg, hsla(220, 28%, 79%, 0.6), transparent);
+    background-image: linear-gradient(0deg, hsla(209, 58%, 18%, 0.6), transparent);
     overflow: hidden;
 }
 
@@ -305,6 +329,14 @@ img {
     max-width: 80vw;
 }
 
+.section .building-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    opacity: 0;
+    animation: 2s cubic-bezier(0,.65,.33,.99) 1.2s 1 buildingAppear forwards;
+}
+
 .section .building img {
     width: 100%;
 }
@@ -318,13 +350,15 @@ img {
 }
 
 .scene.logo {
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: translateY(var(--translateY));
     bottom: auto;
-    top: 6vh;
+    top: 8vh;
+    opacity: 0;
+    animation: 1s ease-out 0s 1 logoAppear forwards;
 }
 
 .logo-svg {
@@ -342,7 +376,7 @@ img {
     animation: zeppelin 90s forwards;
 }
 
-.fadeBox { opacity: var(--o); }
+.scene.fadeBox { opacity: var(--o) !important; }
 .scaleBox img { transform: scale(var(--s));}
 
 /*------------------------------------------------------------------

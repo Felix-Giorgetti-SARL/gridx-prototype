@@ -37,24 +37,37 @@ for (const target of targets) {
 
 /*------------------------------------------------------------------
   Counter anim
+  https://css-tricks.com/animating-number-counters/
 */
+
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
 
 const counterElems = document.querySelectorAll('.animCounter');
 function counterAnimate(entries, observer) {
   entries.forEach((entry) => {
-    let elem = entry.target;
-    let modifier = elem.getAttribute('data-counter');
-    console.log(elem)
+
+    const elem = entry.target;
+    let endValue = elem.getAttribute('data-counter');
+    // const obj = document.getElementById("value");
 
     if (entry.intersectionRatio >= threshold) {
 			//observer.unobserve(elem);
-      for (let i = 0; i <= modifier; i++) {
-        elem.innerHTML =++i
-      }
+      animateValue(elem, 0, endValue, 1000);
 
 		} else {
 			// elem.classList.remove(isAnimated);
-      elem.innerHTML = '0'
+      // elem.innerHTML = '0'
 			// modifiedElem.innerHTML = "Back to start"
 		}
   })
@@ -119,8 +132,8 @@ document.querySelectorAll('.scene').forEach((elem) => {
 
 const fadeBox = basicScroll.create({
     elem: document.querySelector('.fadeBox'),
-    from: 'bottom-middle',
-    to: 'bottom-top',
+    from: 'middle-middle',
+    to: 'middle-top',
     // inside: (instance, percentage, props) => console.log('fadeBox is animating'),
     // outside: (instance, percentage, props) => console.log('fadeBox is not animating'),
     props: {
@@ -140,7 +153,7 @@ const fadeBox = basicScroll.create({
     props: {
       '--s': {
         from: 1,
-        to: 1.06
+        to: 1.1
       }
     }
   })

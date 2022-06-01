@@ -79,6 +79,27 @@ for (const counter of counterElems) {
 }
 
 /*------------------------------------------------------------------
+  Icons animation
+*/
+
+const iconsBlock = document.querySelector('.icons-block');
+
+function iconsAnimate(entries, observer) {
+  entries.forEach((entry) => {
+    const elem = entry.target;
+    if (entry.intersectionRatio >= threshold) {
+      elem.classList.add('anim');
+    } else {
+      elem.classList.remove('anim');
+    }
+  })
+}
+
+const iconsBlockObserver = new IntersectionObserver(iconsAnimate, { threshold });
+iconsBlockObserver.observe(iconsBlock);
+
+
+/*------------------------------------------------------------------
     Basic-scroll
 ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
@@ -110,7 +131,9 @@ document.querySelectorAll('.enterAnim').forEach((elem) => {
 
 })
 
-
+/*------------------------------------------------------------------
+  Parallax Building
+*/
 document.querySelectorAll('.scene').forEach((elem) => {
 
 	const modifier = elem.getAttribute('data-modifier')
@@ -130,6 +153,9 @@ document.querySelectorAll('.scene').forEach((elem) => {
 
 })
 
+/*------------------------------------------------------------------
+  Logo opacity to 0 on scroll
+*/
 const fadeBox = basicScroll.create({
     elem: document.querySelector('.fadeBox'),
     from: 'middle-middle',
@@ -144,6 +170,11 @@ const fadeBox = basicScroll.create({
     }
   })
 
+fadeBox.start()
+
+/*------------------------------------------------------------------
+  Building scale on scroll
+*/
   const scaleBox = basicScroll.create({
     elem: document.querySelector('.scaleBox'),
     from: 'middle-bottom',
@@ -159,4 +190,3 @@ const fadeBox = basicScroll.create({
   })
 
 scaleBox.start()
-fadeBox.start()

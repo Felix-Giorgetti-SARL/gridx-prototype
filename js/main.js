@@ -96,7 +96,9 @@ function iconsAnimate(entries, observer) {
 }
 
 const iconsBlockObserver = new IntersectionObserver(iconsAnimate, { threshold });
-iconsBlockObserver.observe(iconsBlock);
+if (iconsBlock) {
+  iconsBlockObserver.observe(iconsBlock);
+}
 
 
 /*------------------------------------------------------------------

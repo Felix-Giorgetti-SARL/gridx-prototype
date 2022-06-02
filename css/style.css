@@ -505,11 +505,13 @@ img {
     Map
 */
 .map {
-    background-image: url('../assets/map.jpg');
-    background-size: cover;
+    background-image: url('../assets/map-vector.svg');
+    background-size: contain;
     aspect-ratio: 16 / 9;
     border-radius: var(--u2);
     max-height: 96vh;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 /*------------------------------------------------------------------
     Museums

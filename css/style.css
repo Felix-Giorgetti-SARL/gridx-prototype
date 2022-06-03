@@ -503,7 +503,7 @@ img {
     Video
 */
 .video {
-    background-image: url('../assets/fiat_turbina-16-9.jpg');
+    background-image: url('../assets/video-placeholder.jpg');
     background-size: cover;
     aspect-ratio: 16 / 9;
     border-radius: var(--u2);

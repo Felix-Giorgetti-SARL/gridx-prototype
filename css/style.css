@@ -15,13 +15,15 @@
     --hue-purple: 240;
     --gridx-saturation: 60%;
     --gridx-luminosity: 70%;
-    --gridx-blue: hsl(var(--hue-blue), var(--gridx-saturation), var(--gridx-luminosity));
-    --gridx-purple: hsl(var(--hue-purple), var(--gridx-saturation), var(--gridx-luminosity));
-    --gridx-green: hsl(var(--hue-green), var(--gridx-saturation), var(--gridx-luminosity));
-    --gridx-yellow: hsl(var(--hue-yellow), var(--gridx-saturation), var(--gridx-luminosity));
-    --gridx-orange: hsl(var(--hue-orange), var(--gridx-saturation), var(--gridx-luminosity));
-    --gridx-red: hsl(var(--hue-red), var(--gridx-saturation), var(--gridx-luminosity));
-
+    --alpha-1: 1;
+    --alpha-05: 0.5;
+    --gridx-blue: hsla(var(--hue-blue), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-purple: hsla(var(--hue-purple), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-green: hsla(var(--hue-green), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-yellow: hsla(var(--hue-yellow), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-orange: hsla(var(--hue-orange), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-red: hsla(var(--hue-red), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
+    --gridx-blue-alpha: hsla(var(--hue-blue), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-05));
 
     /* Space */
     --sp-xl: 12rem;
@@ -62,6 +64,9 @@
 /*------------------------------------------------------------------
     Reset
 ------------------------------------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
 
 html, body {
     margin: 0;
@@ -152,6 +157,45 @@ sup {
     line-height: 0;
 }
 
+/*------------------------------------------------------------------
+  List
+*/
+ol {
+  list-style: none;
+  counter-reset: custom-counter;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr [col-start]);
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+ol li {
+  counter-increment: custom-counter;
+  display: block;
+  margin-bottom: 0.5rem;
+  padding-right: var(--u6);
+}
+ol li::before {
+  content: counter(custom-counter) ".";
+  font-weight: bold;
+  font-size: var(--u7);
+  margin-right: 0.5rem;
+  line-height: 1;
+  display: block;
+}
+
+/*------------------------------------------------------------------
+  Links
+*/
+a {
+  color: var(--gridx-blue);
+  transition: color 0.4s;
+}
+a:hover {
+  color: var(--gridx-red);
+}
+
+
 
 /*------------------------------------------------------------------
     Blocks & Layout
@@ -203,6 +247,10 @@ sup {
 .col-1-3 {
     width: calc(100% / 3);
     position: relative;
+}
+.col-1-4 {
+  width: calc(100% / 4);
+  position: relative;
 }
 .col-2-3 {
     width: calc(100% / 3 * 2);
@@ -267,6 +315,9 @@ margin-right: var(--u1);
 .flex-row {
     display: flex;
     flex-direction: row;
+}
+.flex-row > div {
+  flex-grow: 1;
 }
 
 /*------------------------------------------------------------------
@@ -778,12 +829,22 @@ img {
   grid-template-columns: repeat(4, 1fr [col-start]);
   width: 100%;
 }
-.icon-card {
+a.icon-card {
   text-align: left;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: var(--u4);
+  padding: var(--u3);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.6s ease-out;
+  border-radius: var(--u2);
+  margin: var(--u2);
+}
+a.icon-card:hover {
+  color: inherit;
+  box-shadow: 0 var(--u2) var(--u6) var(--gridx-blue-alpha);
+  transform: translateY( calc(0px - var(--u2)));
 }
 .icon-card .icon {
   width: 100%;
@@ -798,7 +859,7 @@ img {
 }
 
 .icons-block .icon .cls-1 {
-    animation-duration: 2s;
+    animation-duration: 1.2s;
     animation-timing-function: cubic-bezier(0, 0, 0.6, 1);
     animation-fill-mode:forwards;
     stroke-width: 3px;
@@ -857,3 +918,12 @@ img {
   .icon-h .cls-1 {stroke: var(--gridx-yellow);}
   .icon-E .cls-1 {stroke: var(--gridx-orange);}
   .icon-b .cls-1 {stroke: var(--gridx-red);}
+
+/*------------------------------------------------------------------
+  Impact
+*/
+.building-site {
+  background-image: url('../assets/wickrange.jpg');
+  background-size: cover;
+  aspect-ratio: 16 / 6;
+}

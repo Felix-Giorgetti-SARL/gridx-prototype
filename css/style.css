@@ -7,6 +7,7 @@
     /* Colors */
     --dark: #000;
     --light: #fff;
+    --hue-dark: 0;
     --hue-red: 10;
     --hue-orange: 40;
     --hue-yellow: 80;
@@ -14,7 +15,9 @@
     --hue-blue: 193;
     --hue-purple: 240;
     --gridx-saturation: 60%;
+    --gridx-saturation-0: 0%;
     --gridx-luminosity: 70%;
+    --gridx-luminosity-0: 0%;
     --alpha-1: 1;
     --alpha-05: 0.5;
     --gridx-blue: hsla(var(--hue-blue), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
@@ -24,6 +27,7 @@
     --gridx-orange: hsla(var(--hue-orange), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
     --gridx-red: hsla(var(--hue-red), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-1));
     --gridx-blue-alpha: hsla(var(--hue-blue), var(--gridx-saturation), var(--gridx-luminosity), var(--alpha-05));
+    --gridx-dark-alpha: hsla(var(--hue-dark), var(--gridx-saturation-0), 40%, var(--alpha-05));
 
     /* Space */
     --sp-xl: 12rem;
@@ -611,6 +615,46 @@ img {
 .card-text-container p {
     max-width: 48ch;
 }
+
+/*------------------------------------------------------------------
+  Nav
+*/
+.nav {
+  width: 100vw;
+  z-index: 99;
+  top: var(--u2);
+  position: fixed;
+}
+.nav-wrapper {
+  background-color: hsla(var(--hue-blue), 20%, 40%, 0.5);
+  -webkit-backdrop-filter: blur(var(--u2));
+  backdrop-filter: blur(var(--u4));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--u1) var(--u4);
+  box-shadow: 0 var(--u4) var(--u8) var(--gridx-dark-alpha);
+  border-top: 1px solid var(--gridx-blue-alpha);
+  border-bottom: 1px solid var(--gridx-blue-alpha);
+  border-radius: var(--u1);
+  transform: translateY(-120%);
+  transition: transform 0.6s ease-out;
+}
+.nav-logo img {
+  height: var(--u6);
+}
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+.nav li {
+  margin: var(--u1) var(--u2);
+}
+.nav.nav-active .nav-wrapper {
+  transform: translateY(0%);
+}
+
 
 /*------------------------------------------------------------------
     icons

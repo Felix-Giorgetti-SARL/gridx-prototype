@@ -192,3 +192,26 @@ fadeBox.start()
   })
 
 scaleBox.start()
+
+
+/*------------------------------------------------------------------
+  Nav appear
+*/
+const nav = document.querySelector('.nav')
+let enterFirst = 0
+
+const navActivation = basicScroll.create({
+  elem: document.querySelector('.icons-block'),
+  from: 'top-bottom',
+  to: 'bottom-top',
+  outside: (instance, percentage, props) => {
+
+      nav.classList.add('nav-active')
+  },
+  inside: (instance, percentage, props) =>
+  {
+    nav.classList.remove('nav-active')
+  }
+})
+
+navActivation.start()
